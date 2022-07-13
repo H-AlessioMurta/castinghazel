@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: castinghazel
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: castinghazel
+  template:
+    metadata:
+      labels:
+        app: castinghazel
+    spec:
+      containers:
+      - image: hazelcast/hazelcast:latest
+        name: castinghazel
+        ports:
+        - containerPort: 80
