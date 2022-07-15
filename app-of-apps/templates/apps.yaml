@@ -6,7 +6,7 @@ metadata:
   namespace: hazel-argo
   
 spec:
-   
+    replica: 3
     destination:
         server: https://kubernetes.default.svc
     project: hazel-argo
@@ -14,3 +14,7 @@ spec:
         repoURL: https://github.com/H-AlessioMurta/castinghazel.git
         targetRevision: HEAD
         path: app-of-apps/
+    syncPolicy:
+        automated:
+        prune: true
+        selfHeal: true
