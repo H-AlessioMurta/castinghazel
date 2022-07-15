@@ -6,7 +6,6 @@ metadata:
   namespace: argocd
   
 spec:
-    replica: 3
     destination:
         server: https://kubernetes.default.svc
     project: argocd
@@ -18,3 +17,6 @@ spec:
         automated:
         prune: true
         selfHeal: true
+    clusterSize: 3
+    repository: 'docker.io/hazelcast/hazelcast'
+    version: '5.1.1-slim'

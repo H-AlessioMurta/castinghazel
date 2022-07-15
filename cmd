@@ -1,31 +1,27 @@
 ## Installare argo nel cluster
 
-kubectl create namespace hazel-argo
-kubectl apply -n hazel-argo -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-kubectl patch svc argocd-server -n hazel-argo -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 
 ## recupera il nome server:
 
-kubectl get service argocd-server -n hazel-argo --output=jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+kubectl get service argocd-server -n argocd --output=jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 
-kubectl port-forward svc/argocd-server -n hazel-argo 8888:443
+kubectl port-forward svc/argocd-server -n argocd 8888:443
 
-kubectl -n hazel-argo get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 
 
 
-argocd login localhost --username admin --password C50e5JJ3Y4Hn7qVU
+argocd login localhost --username admin --password PSqb-0RJw8S2NdhH
 
-argocd proj create hz -d https://kubernetes.default.svc,hazel-argo -s https://github.com/H-AlessioMurta/castinghazel.git
+argocd proj create hazelproject -d https://kubernetes.default.svc,argocd -s https://github.com/H-AlessioMurta/castinghazel.git
 
-argocd app create hzapp --repo https://github.com/H-AlessioMurta/castinghazel.git  \
---path  app-of-apps \
- --dest-server https://kubernetes.default.svc \
- --dest-namespace hazel-argo
 
- argocd app create hzc \
+ argocd app create app-of-apps \
  --repo https://github.com/H-AlessioMurta/castinghazel.git \
- --path hazelcluster \
+ --path app-of-apps \
  --dest-server https://kubernetes.default.svc \
- --dest-namespace hazel-argo
+ --dest-namespace argocd
