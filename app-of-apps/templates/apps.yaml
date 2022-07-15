@@ -2,8 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fakesit20
+  name: hazel
   namespace: argocd
+finalizers:
+  - resources-finalizer.argocd.argoproj.io
   
 spec:
     destination:
