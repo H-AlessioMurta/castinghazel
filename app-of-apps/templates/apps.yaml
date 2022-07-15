@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hazel
+  name: fakesit20
   namespace: hazel-argo
   
 spec:
