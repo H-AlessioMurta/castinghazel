@@ -6,9 +6,11 @@ metadata:
   namespace: hazel-argo
   
 spec:
-    replica: 2
+   
     destination:
         server: https://kubernetes.default.svc
+    project: hazel-argo
     source:
-        repoURL: https://github.com/argoproj/argocd-example-apps
+        repoURL: https://github.com/H-AlessioMurta/castinghazel.git
         targetRevision: HEAD
+        path: app-of-apps/
