@@ -1,27 +1,8 @@
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: hazelcast.com/v1alpha1
+kind: Hazelcast
 metadata:
-  name: hazel
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-  
+  name: hazelcast-sample
 spec:
-    destination:
-        server: https://kubernetes.default.svc
-
-    syncPolicy:
-        automated:
-        prune: true
-        selfHeal: true
-    replicaCount: 3
-
-    image:
-      repository: gcr.io/heptio-images/ks-guestbook-demo
-      tag: 0.1
-      pullPolicy: IfNotPresent
-
-    service:
-      type: ClusterIP
-      port: 80
+  clusterSize: 3
+  repository: 'docker.io/hazelcast/hazelcast'
+  version: '5.1.1-slim'
