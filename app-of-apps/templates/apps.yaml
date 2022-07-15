@@ -1,0 +1,14 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hazel
+  namespace: hazel-argo
+  
+spec:
+    replica: 2
+    destination:
+        server: https://kubernetes.default.svc
+    source:
+        repoURL: https://github.com/argoproj/argocd-example-apps
+        targetRevision: HEAD

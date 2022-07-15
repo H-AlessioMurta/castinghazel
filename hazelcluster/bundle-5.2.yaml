@@ -1286,14 +1286,14 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: hazelcast-platform-controller-manager
-  namespace: default
+  namespace:  hazel-argo
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   creationTimestamp: null
   name: hazelcast-platform-manager-role
-  namespace: default
+  namespace:  hazel-argo
 rules:
 - apiGroups:
   - ""
@@ -1476,7 +1476,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: hazelcast-platform-manager-rolebinding
-  namespace: default
+  namespace:  hazel-argo
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -1484,7 +1484,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: hazelcast-platform-controller-manager
-  namespace: default
+  namespace:  hazel-argo
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -1497,7 +1497,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: hazelcast-platform-controller-manager
-  namespace: default
+  namespace:  hazel-argo
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -1505,7 +1505,7 @@ metadata:
   labels:
     control-plane: controller-manager
   name: hazelcast-platform-controller-manager
-  namespace: default
+  namespace:  hazel-argo
 spec:
   replicas: 1
   selector:
