@@ -8,10 +8,10 @@ metadata:
 spec:
     destination:
         server: https://kubernetes.default.svc
+    clusterSize: 3
+    repository: 'docker.io/hazelcast/hazelcast:latest'
+    version: '5.1.1-slim'
     syncPolicy:
         automated:
         prune: true
         selfHeal: true
-    clusterSize: 3
-    repository: 'docker.io/hazelcast/hazelcast'
-    version: '5.1.1-slim'
