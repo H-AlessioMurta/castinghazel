@@ -10,10 +10,18 @@ metadata:
 spec:
     destination:
         server: https://kubernetes.default.svc
-    clusterSize: 3
-    repository: 'docker.io/hazelcast/hazelcast:latest'
-    version: '5.1.1-slim'
+
     syncPolicy:
         automated:
         prune: true
         selfHeal: true
+    replicaCount: 3
+
+    image:
+      repository: gcr.io/heptio-images/ks-guestbook-demo
+      tag: 0.1
+      pullPolicy: IfNotPresent
+
+    service:
+      type: ClusterIP
+      port: 80
