@@ -3,13 +3,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: fakesit20
-  namespace: hazel-argo
+  namespace: argocd
   
 spec:
     replica: 3
     destination:
         server: https://kubernetes.default.svc
-    project: hazel-argo
+    project: argocd
     source:
         repoURL: https://github.com/H-AlessioMurta/castinghazel.git
         targetRevision: HEAD
