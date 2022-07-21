@@ -1,8 +1,20 @@
-apiVersion: hazelcast.com/v1alpha1
-kind: Hazelcast
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: hazel
 spec:
-  clusterSize: 3
-  repository: 'docker.io/hazelcast/hazelcast'
-  version: '5.1.1-slim'
+  replicas: 3
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: hazel
+  template:
+    metadata:
+      labels:
+        app: hazel
+    spec:
+      containers:
+      - image: hazelcast/hazelcast:latest
+        name: hazel
+        ports:
+        - containerPort: 80
