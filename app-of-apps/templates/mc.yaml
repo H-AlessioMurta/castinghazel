@@ -13,7 +13,7 @@ spec:
         app: pod-hazelcast-management-center
     spec:
       containers:
-        - image: "springboot-k8s-hello-world/the-management-center"
+        - image: hazelcast/management-center:latest
           # Always from local, never from Dockerhub
           #imagePullPolicy: Never
           # Url to check every 10 seconds if the container is ok
