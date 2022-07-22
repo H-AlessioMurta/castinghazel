@@ -21,6 +21,9 @@ spec:
 ---      
 apiVersion: apps/v1
 kind: Service
+metadata:
+  name: hazel
+  namespace: argocd
 spec:
   type: ClusterIP
   ports:
