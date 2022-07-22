@@ -22,7 +22,7 @@ spec:
 apiVersion: apps/v1
 kind: Service
 metadata:
-  name: hazelsvc
+  name: hazel
 spec:
   type: ClusterIP
   clusterIP: 5701
