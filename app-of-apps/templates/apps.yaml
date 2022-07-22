@@ -32,3 +32,16 @@ spec:
   - protocol: TCP
     port: 5701
     targetPort: 5701
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+ name: hazel-cluster
+roleRef:
+ apiGroup: rbac.authorization.k8s.io
+ kind: ClusterRole
+ name: view
+subjects:
+ - kind: ServiceAccount
+ name: hazel
+ namespace: argocd
