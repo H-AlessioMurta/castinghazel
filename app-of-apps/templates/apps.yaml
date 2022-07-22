@@ -21,8 +21,6 @@ spec:
 ---      
 apiVersion: apps/v1
 kind: Service
-metadata:
-  name: hazel
 spec:
   type: ClusterIP
   ports:
