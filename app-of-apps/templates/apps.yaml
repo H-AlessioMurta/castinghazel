@@ -25,7 +25,6 @@ metadata:
   name: hazel
 spec:
   type: ClusterIP
-  clusterIP: 5701
   ports:
   - protocol: TCP
     port: 5701
