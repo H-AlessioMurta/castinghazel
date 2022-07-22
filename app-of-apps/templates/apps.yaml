@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-cip-service
+  name: hazel-service
 spec:
   type: ClusterIP
   # Uncomment the below line to create a Headless Service
