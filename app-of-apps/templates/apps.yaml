@@ -29,5 +29,5 @@ spec:
   - protocol: TCP
     targetPort: 5701
   selector: 
-    app: hazel
+    app: app-of-apps
         
