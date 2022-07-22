@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-hazelcast-management-center
+spec:
+  selector:
+    matchLabels:
+      app: pod-hazelcast-management-center
+  template:
+    metadata:
+      labels:
+        app: pod-hazelcast-management-center
+    spec:
+      containers:
+        - image: "springboot-k8s-hello-world/the-management-center"
+          # Always from local, never from Dockerhub
+          #imagePullPolicy: Never
+          # Url to check every 10 seconds if the container is ok
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+          name: container-hazelcast-management-center
+          # Url to check the container is up
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-hazelcast-management-center
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: pod-hazelcast-management-center
+  type: NodePort
