@@ -27,7 +27,7 @@ spec:
   type: ClusterIP
   ports:
   - protocol: TCP
-    port: 5701
-    targetPort: hazelcast
-    name: hzport
+    targetPort: 5701
+  selector: 
+    app: hazel
         
