@@ -1,0 +1,5 @@
+ - name: app
+    image: leszko/hazelcast-python-client
+    ports:
+    - name: app
+      containerPort: 5000
