@@ -20,13 +20,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /health
-              port: 8081
+              port: 8666
           name: container-hazelcast-management-center
           # Url to check the container is up
           readinessProbe:
             httpGet:
               path: /health
-              port: 8081
+              port: 8666
             initialDelaySeconds: 30
 ---
 apiVersion: v1
