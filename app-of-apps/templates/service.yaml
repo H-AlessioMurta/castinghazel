@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: hazelsvc
+  namespace: argocd
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    targetPort: 5701
