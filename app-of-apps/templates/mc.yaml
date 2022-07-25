@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: management-center
@@ -11,7 +11,7 @@ spec:
        app: management-center
    spec:
      containers:
-     - name: hazelcast
+     - name: hz-management-center
        image: hazelcast/management-center
 
 ---
