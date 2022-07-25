@@ -36,8 +36,8 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8666
-      targetPort: 8666
+      port: 8080
+      targetPort: 8080
   selector:
     app: hz-management-center
   type: NodePort
