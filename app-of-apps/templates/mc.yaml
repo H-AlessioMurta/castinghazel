@@ -16,19 +16,7 @@ spec:
         - image: hazelcast/management-center:latest
           # Always from local, never from Dockerhub
           #imagePullPolicy: Never
-          # Url to check every 10 seconds if the container is ok
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8666
-            initialDelaySeconds: 180
-          name: container-hazelcast-management-center
-          # Url to check the container is up
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8666
-            initialDelaySeconds: 180
+
 ---
 apiVersion: v1
 kind: Service
