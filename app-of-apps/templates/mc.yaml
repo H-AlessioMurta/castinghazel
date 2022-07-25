@@ -20,13 +20,13 @@ spec:
           #livenessProbe:
           #  httpGet:
           #    path: /health
-          #    port: 8666
+          #    port: 8081
           name: container-hz-management-center
           # Url to check the container is up
           #readinessProbe:
           #  httpGet:
           #    path: /health
-          #    port: 8666
+          #    port: 8081
           #  initialDelaySeconds: 30
 ---
 apiVersion: v1
