@@ -2,15 +2,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pod-hazelcast-management-center
+  name: management-center
 spec:
   selector:
     matchLabels:
-      app: pod-hazelcast-management-center
+      app: management-center
   template:
     metadata:
       labels:
-        app: pod-hazelcast-management-center
+        app: management-center
     spec:
       containers:
         - image: hazelcast/management-center:latest
@@ -34,12 +34,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-hazelcast-management-center
+  name: management-center
 spec:
+  type: NodePort
+  selector:
+    app: management-center
   ports:
     - protocol: TCP
       port: 8666
       targetPort: 8666
-  selector:
-    app: pod-hazelcast-management-center
-  type: NodePort
+  
+  
