@@ -2,33 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: management-center
+  name: management-center-dpl
 spec:
-  selector:
-    matchLabels:
-      app: management-center
   template:
     metadata:
       labels:
         app: management-center
     spec:
       containers:
+        - name: hz-management-center
         - image: hazelcast/management-center:latest
           # Always from local, never from Dockerhub
           #imagePullPolicy: Never
                     # Url to check every 10 seconds if the container is ok
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8666
-            initialDelaySeconds: 180
-          name: container-hazelcast-management-center
+#          livenessProbe:
+#            httpGet:
+#              path: /health
+#              port: 8666
+#            initialDelaySeconds: 180
           # Url to check the container is up
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8666
-            initialDelaySeconds: 180
+#         readinessProbe:
+#            httpGet:
+#              path: /health
+#              port: 8666
+#            initialDelaySeconds: 180
 
 ---
 apiVersion: v1
