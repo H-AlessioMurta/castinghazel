@@ -4,13 +4,13 @@ kind: Deployment
 metadata:
   name: management-center-dpl
 spec:
+  selector:
+        app: management-center
   template:
     metadata:
       labels:
         app: management-center
     spec:
-      selector:
-        app: management-center
       containers:
         - name: hz-management-center
         - image: hazelcast/management-center:latest
