@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hazel
+  name: hazel-dpl
 spec:
   replicas: 3
   revisionHistoryLimit: 3
@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hazel-service
+  name: hazel-svc
 spec:
   type: ClusterIP
   # Uncomment the below line to create a Headless Service
