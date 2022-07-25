@@ -28,6 +28,9 @@ spec:
           #    path: /health
           #    port: 8081
           #  initialDelaySeconds: 30
+          ports:
+          - containerPort: 80
+
 ---
 apiVersion: v1
 kind: Service
